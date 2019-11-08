@@ -35,3 +35,7 @@ elements.searchForm.addEventListener('submit', e => {
   e.preventDefault();
   controlSearch();
 });
+
+element.searchResPages.addEventListener('click', e => {
+  console.log(e.target)
+});

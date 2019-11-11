@@ -1,4 +1,5 @@
 import Search from './models/Search';
+import Recipe from './models/Recipe';
 import * as searchView from './views/searchView';
 import {elements, renderLoader, clearLoader} from './views/base';
 
@@ -9,6 +10,7 @@ import {elements, renderLoader, clearLoader} from './views/base';
 // - liked recipes
 const state = {};
 
+// SEARCH CONTROLLER
 const controlSearch = async() => {
   // 1) get query from the view
   const query = searchView.getInput();
@@ -36,6 +38,13 @@ elements.searchForm.addEventListener('submit', e => {
   controlSearch();
 });
 
-element.searchResPages.addEventListener('click', e => {
-  console.log(e.target)
+elements.searchResPages.addEventListener('click', e => {
+  const btn = e.target.closest('.btn-inline');
+  if(btn){
+    const goToPage = parseInt(btn.dataset.goto, 10);
+    searchView.clearResults();
+    searchView.renderResults(state.search.result, goToPage);
+  }
 });
+
+// RECIPE CONTROLLER

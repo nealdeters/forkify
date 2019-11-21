@@ -1,6 +1,6 @@
 import uniqid from 'uniqid';
 
-export default class List = {
+export default class List {
   constructor() {
     this.items = [];
   }
@@ -18,7 +18,7 @@ export default class List = {
     return item;
   }
 
-  removeItem (id) {
+  deleteItem (id) {
     const index = this.items.findIndex(el => el.id === id);
     
     // remove item from the list
